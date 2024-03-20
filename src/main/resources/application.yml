@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: CWC_backend_springboot
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # This line is used  to set the URL link of the database
+    url: jdbc:mysql://localhost:3306/cwc_backend_db?serverTimezone=GMT-8
+    # Configure the password and username of the database before connecting
+    username: root
+    password: root
+
+# This line is used to change the server's port number
+server:
+    port: 9090
+
