@@ -14,9 +14,8 @@ import java.util.List;
 @SpringBootApplication
 public class CwcBackendSpringbootApplication {
 
-
-
     public static void main(String[] args) {
+
         SpringApplication.run(CwcBackendSpringbootApplication.class, args);
     }
 }
