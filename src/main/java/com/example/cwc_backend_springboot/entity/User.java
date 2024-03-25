@@ -12,12 +12,12 @@ public class User {
     private Integer id;
     private String username;
     private String password;
-    private String nickname;
-    private String email;
-    private String address;
-    private String create_time;
+    private String role;
+    private String name;
+    private String description;
+    private String token;
 
-//    All the following getter and setter could be used in Lombok package @Data no need to explicitly getters and setters
+    // All the following getter and setter could be used in Lombok package @Data no need to explicitly getters and setters
 //    public Integer getId() {
 //        return id;
 //    }
@@ -42,35 +42,35 @@ public class User {
 //        this.password = password;
 //    }
 //
-//    public String getNickname() {
-//        return nickname;
+//    public String getRole() {
+//        return role;
 //    }
 //
-//    public void setNickname(String nickname) {
-//        this.nickname = nickname;
+//    public void setRole(String role) {
+//        this.role = role;
 //    }
 //
-//    public String getEmail() {
-//        return email;
+//    public String getName() {
+//        return name;
 //    }
 //
-//    public void setEmail(String email) {
-//        this.email = email;
+//    public void setName(String name) {
+//        this.name = name;
 //    }
 //
-//    public String getAddress() {
-//        return address;
+//    public String getDescription() {
+//        return description;
 //    }
 //
-//    public void setAddress(String address) {
-//        this.address = address;
+//    public void setDescription(String description) {
+//        this.description = description;
 //    }
 //
-//    public String getCreate_time() {
-//        return create_time;
+//    public String getToken() {
+//        return token;
 //    }
 //
-//    public void setCreate_time(String create_time) {
-//        this.create_time = create_time;
+//    public void setToken(String token) {
+//        this.token = token;
 //    }
 }

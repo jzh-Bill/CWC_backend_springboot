@@ -1,5 +1,6 @@
 package com.example.cwc_backend_springboot.mapper;
 
+import com.example.cwc_backend_springboot.entity.Token;
 import com.example.cwc_backend_springboot.entity.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,4 +19,10 @@ public interface UserMapper {
     @Update("UPDATE sys_users set username = #{username}, password = #{password}, nickname = #{nickname}, email = #{email}, address = #{address}" +
             " where id = #{id}") // You may create a bug if you have no space between keyword "where" and #{address}
     int update(User user);
+
+    @Select("select * from users where username = #{username}")
+    User selectByUsername(String username);
+
+    @Select("select token from users where username = #{username}")
+    Token findTokenByUsername(String username);
 }

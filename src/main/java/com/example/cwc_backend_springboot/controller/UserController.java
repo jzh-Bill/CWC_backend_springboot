@@ -1,32 +1,42 @@
 package com.example.cwc_backend_springboot.controller;
 
+import com.example.cwc_backend_springboot.common.Result;
+import com.example.cwc_backend_springboot.entity.Account;
+import com.example.cwc_backend_springboot.entity.Token;
 import com.example.cwc_backend_springboot.entity.User;
 import com.example.cwc_backend_springboot.mapper.UserMapper;
 import com.example.cwc_backend_springboot.service.UserService;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+//@RequestMapping("/user") //This is the prefix of URL when client trying to get
 
-@RequestMapping("/user") //This is the prefix of URL when client trying to get
+@RequestMapping("/") //This is the prefix of URL when client trying to get
 @RestController
+@CrossOrigin
 public class UserController {
 
-    @Autowired
-    private UserMapper userMapper;
+    @Resource UserService userService;
 
-    @Autowired
-    private UserService userService;
+    @PostMapping(value = "login", produces = "application/json")
+    public Result login(@RequestBody Account account) {
+        Result result = new Result();
 
-    @PostMapping
-    public Integer save(@RequestBody User user) { // @RequestBody will convert the json object to java object
-        // Creating and Updating could be done with same URL and function
-        return userService.save(user);
-    }
+        if (userService.login(account) == true) {
+            // When user is found, we return a token which servers as an indicator to show the password is matched.
+            Token token = userService.getToken(account.getUsername());
 
-    @GetMapping("/") // Thus, the complete URL is /user/
-    // GetMapping is used to get data from database
-    public List<User> index() {
-        return userMapper.findAll();
+            // We set the result(or response) status to be 0 to make frontend aware that user is found.
+            result.setStatus(0);
+            result.setMsg("Success logged in");
+            result.setData(token);
+        }else {
+            // set status code to be 1 indicating no such a user or password does not match.
+            result.setStatus(1);
+            result.setMsg("Username or Password is incorrect");
+        }
+        return result;
     }
 }
+
