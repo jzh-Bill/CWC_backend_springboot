@@ -4,7 +4,7 @@
 - DB: Mysql 
 - Rest Service: Sprint Boot
 
-### Run SprintBoot App:
+## STEP 1: Run SprintBoot App:
 1. install maven
 ```shell
 brew install mvn
@@ -34,7 +34,7 @@ mvn clean package
 
 ![img.png](img.png)
 
-### Mysql set up:
+## STEP 2: Mysql set up:
 1. install mysql
 ```shell
 brew install mysql
@@ -45,12 +45,11 @@ brew install mysql
 # run commands under project directory
 brew services start mysql
 # enter mysql
-mysql -u root -p # input root for password
-# first-time setup
-create database cwc_backend_db;
+mysql -u root -p # input "root" for password
+create database cwc_backend_db; # only run when first-time setup
+use cwc_backend_db;
 source script.sql;
 exit;
 ```
-3. [optional] GUI: mysql workbench [download link](https://dev.mysql.com/doc/workbench/en/wb-installing.html).
-
-### Test app connecting Mysql
+3. 
+4. [optional] GUI: mysql workbench [download link](https://dev.mysql.com/doc/workbench/en/wb-installing.html).
