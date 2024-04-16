@@ -25,4 +25,7 @@ public interface UserMapper {
 
     @Select("select token from users where username = #{username}")
     Token findTokenByUsername(String username);
+
+    @Select("select * from users")
+    List<User> getUsers();
 }

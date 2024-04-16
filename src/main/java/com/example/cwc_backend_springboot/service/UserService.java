@@ -8,6 +8,8 @@ import jakarta.annotation.Resource;
 import com.example.cwc_backend_springboot.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
 
@@ -30,5 +32,10 @@ public class UserService {
     public Token getToken(String username) {
         Token token = userMapper.findTokenByUsername(username);
         return token;
+    }
+
+    public List<User> getUsers() {
+        List<User> users = userMapper.getUsers();
+        return users;
     }
 }
