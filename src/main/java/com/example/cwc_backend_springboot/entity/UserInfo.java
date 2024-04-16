@@ -1,18 +1,23 @@
 package com.example.cwc_backend_springboot.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
 public class UserInfo {
-    private Integer id;
+    private int id;
     private String username;
     private String role;
     private String name;
     private String description;
     private String token;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
