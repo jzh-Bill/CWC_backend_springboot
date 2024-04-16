@@ -23,61 +23,61 @@ DROP TABLE IF EXISTS `attendee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `attendee` (
-  `Person_ID` int NOT NULL AUTO_INCREMENT,
+  `person_id` int NOT NULL AUTO_INCREMENT,
   `cwc_id` varchar(50) NOT NULL,
-  `First_name` varchar(50) NOT NULL,
-  `Last_name` varchar(50) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
   `family_id` varchar(50) NOT NULL,
-  `Middle_name` varchar(50) DEFAULT NULL,
-  `Chinese_Name` varchar(50) DEFAULT NULL,
-  `Christian_flag` tinyint(1) DEFAULT '0',
-  `Single` tinyint(1) DEFAULT '1',
-  `Gender` char(8) DEFAULT NULL,
-  `Age` int DEFAULT NULL,
-  `Phone` varchar(50) NOT NULL,
-  `Email` varchar(50) NOT NULL,
-  `Fax` varchar(50) DEFAULT NULL,
-  `Language_preference` varchar(50) DEFAULT NULL,
-  `Worship_group` tinyint(1) DEFAULT NULL,
-  `Worship_date` varchar(50) DEFAULT NULL,
-  `Worship_morning` tinyint(1) DEFAULT NULL,
-  `Worship_afternoon` tinyint(1) DEFAULT NULL,
-  `General_affair` tinyint(1) DEFAULT NULL,
-  `Book_room` tinyint(1) DEFAULT NULL,
-  `Dining_room` tinyint(1) DEFAULT NULL,
-  `Tape_recording` tinyint(1) DEFAULT NULL,
-  `English_translation` tinyint(1) DEFAULT NULL,
-  `Cantonese_translation` tinyint(1) DEFAULT NULL,
-  `Nursery` tinyint(1) DEFAULT NULL,
-  `Time_keeper` tinyint(1) DEFAULT NULL,
-  `Registration` tinyint(1) DEFAULT NULL,
-  `Counselor` tinyint(1) DEFAULT NULL,
-  `Speaker` tinyint(1) DEFAULT NULL,
-  `CWC_worker` tinyint(1) DEFAULT NULL,
-  `Mission_member` tinyint(1) DEFAULT NULL,
-  `Children_coworker` tinyint(1) DEFAULT NULL,
-  `Winter_coworker` tinyint(1) DEFAULT NULL,
+  `middle_name` varchar(50) DEFAULT NULL,
+  `chinese_name` varchar(50) DEFAULT NULL,
+  `christian_flag` tinyint(1) DEFAULT '0',
+  `single` tinyint(1) DEFAULT '1',
+  `gender` char(8) DEFAULT NULL,
+  `age` int DEFAULT NULL,
+  `phone` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `fax` varchar(50) DEFAULT NULL,
+  `language_preference` varchar(50) DEFAULT NULL,
+  `worship_group` tinyint(1) DEFAULT NULL,
+  `worship_date` varchar(50) DEFAULT NULL,
+  `worship_morning` tinyint(1) DEFAULT NULL,
+  `worship_afternoon` tinyint(1) DEFAULT NULL,
+  `general_affair` tinyint(1) DEFAULT NULL,
+  `book_room` tinyint(1) DEFAULT NULL,
+  `dining_room` tinyint(1) DEFAULT NULL,
+  `tape_recording` tinyint(1) DEFAULT NULL,
+  `english_translation` tinyint(1) DEFAULT NULL,
+  `cantonese_translation` tinyint(1) DEFAULT NULL,
+  `nursery` tinyint(1) DEFAULT NULL,
+  `time_keeper` tinyint(1) DEFAULT NULL,
+  `registration` tinyint(1) DEFAULT NULL,
+  `counselor` tinyint(1) DEFAULT NULL,
+  `speaker` tinyint(1) DEFAULT NULL,
+  `cwc_worker` tinyint(1) DEFAULT NULL,
+  `mission_member` tinyint(1) DEFAULT NULL,
+  `children_coworker` tinyint(1) DEFAULT NULL,
+  `winter_coworker` tinyint(1) DEFAULT NULL,
   `others` text,
-  `Self_Pay` tinyint(1) DEFAULT '0',
-  `Late_Guarantee` tinyint(1) DEFAULT NULL,
-  `Credit_Card_Type` varchar(50) DEFAULT NULL,
-  `Credit_Card_Number` varchar(50) DEFAULT NULL,
-  `Credit_Card_Expiration` varchar(50) DEFAULT NULL,
-  `Arrival_Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Leave_Date` timestamp NULL DEFAULT NULL,
-  `Counselor_ID` varchar(50) DEFAULT NULL,
-  `Title` varchar(50) DEFAULT NULL,
-  `Relationship` varchar(50) DEFAULT NULL,
-  `CounseleeName` varchar(50) DEFAULT NULL,
-  `CounseleeCity` varchar(50) DEFAULT NULL,
-  `Attendee_Type` varchar(50) DEFAULT NULL,
-  `Att_LC_FT` tinyint(1) DEFAULT NULL,
-  `Att_LC_PT` tinyint(1) DEFAULT NULL,
+  `self_pay` tinyint(1) DEFAULT '0',
+  `late_guarantee` tinyint(1) DEFAULT NULL,
+  `credit_card_type` varchar(50) DEFAULT NULL,
+  `credit_card_number` varchar(50) DEFAULT NULL,
+  `credit_card_expiration` varchar(50) DEFAULT NULL,
+  `arrival_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `leave_date` timestamp NULL DEFAULT NULL,
+  `counselor_id` varchar(50) DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `relationship` varchar(50) DEFAULT NULL,
+  `counselee_name` varchar(50) DEFAULT NULL,
+  `counselee_city` varchar(50) DEFAULT NULL,
+  `attendee_type` varchar(50) DEFAULT NULL,
+  `att_lc_ft` tinyint(1) DEFAULT NULL,
+  `att_lc_pt` tinyint(1) DEFAULT NULL,
   `active` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`Person_ID`),
-  KEY `cwc_id_FK` (`cwc_id`),
-  CONSTRAINT `cwc_id_FK` FOREIGN KEY (`cwc_id`) REFERENCES `attendee_family` (`cwc_id`),
-  CONSTRAINT `CHK_Attendee` CHECK ((`Gender` in (_utf8mb4'Male',_utf8mb4'Female',_utf8mb4'F',_utf8mb4'M')))
+  PRIMARY KEY (`person_id`),
+  KEY `cwc_id_fk` (`cwc_id`),
+  CONSTRAINT `cwc_id_fk` FOREIGN KEY (`cwc_id`) REFERENCES `attendee_family` (`cwc_id`),
+  CONSTRAINT `chk_attendee` CHECK ((`gender` in (_utf8mb4'Male',_utf8mb4'Female',_utf8mb4'F',_utf8mb4'M',_utf8mb4'f',_utf8mb4'm',_utf8mb4'male',_utf8mb4'female')))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -91,33 +91,33 @@ LOCK TABLES `attendee` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Attendee_family`
+-- Table structure for table `attendee_family`
 --
 
-DROP TABLE IF EXISTS `Attendee_family`;
+DROP TABLE IF EXISTS `attendee_family`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Attendee_family` (
-  `confirmation_num` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `attendee_family` (
+  `confirmation_id` int NOT NULL AUTO_INCREMENT,
   `cwc_id` varchar(50) NOT NULL,
   `regi_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Address` varchar(50) NOT NULL,
-  `City` varchar(50) NOT NULL,
-  `State` varchar(50) NOT NULL,
-  `Zip_code` varchar(50) NOT NULL,
-  PRIMARY KEY (`confirmation_num`),
-  UNIQUE KEY `Attendee_family_UNIQUE` (`cwc_id`),
-  CONSTRAINT `CHK_Person` CHECK ((`State` in (_utf8mb4'AL',_utf8mb4'AK',_utf8mb4'AS',_utf8mb4'AZ',_utf8mb4'AR',_utf8mb4'CA',_utf8mb4'CO',_utf8mb4'CT',_utf8mb4'DE',_utf8mb4'DC',_utf8mb4'FL',_utf8mb4'GA',_utf8mb4'GU',_utf8mb4'HI',_utf8mb4'ID',_utf8mb4'IL',_utf8mb4'IN',_utf8mb4'IA',_utf8mb4'KS',_utf8mb4'KY',_utf8mb4'LA',_utf8mb4'ME',_utf8mb4'MD',_utf8mb4'MA',_utf8mb4'MI',_utf8mb4'MN',_utf8mb4'MS',_utf8mb4'MO',_utf8mb4'MT',_utf8mb4'NE',_utf8mb4'NV',_utf8mb4'NH',_utf8mb4'NJ',_utf8mb4'NM',_utf8mb4'NY',_utf8mb4'NC',_utf8mb4'ND',_utf8mb4'MP',_utf8mb4'OH',_utf8mb4'OK',_utf8mb4'OR',_utf8mb4'PA',_utf8mb4'PR',_utf8mb4'RI',_utf8mb4'SC',_utf8mb4'SD',_utf8mb4'TN',_utf8mb4'TX',_utf8mb4'UT',_utf8mb4'VT',_utf8mb4'VA',_utf8mb4'VI',_utf8mb4'WA',_utf8mb4'WV',_utf8mb4'WI',_utf8mb4'WY')))
+  `address` varchar(50) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `state` varchar(50) NOT NULL,
+  `zip_code` varchar(50) NOT NULL,
+  PRIMARY KEY (`confirmation_id`),
+  UNIQUE KEY `attendee_family_unique` (`cwc_id`),
+  CONSTRAINT `chk_person` CHECK ((`state` in (_utf8mb4'AL',_utf8mb4'AK',_utf8mb4'AS',_utf8mb4'AZ',_utf8mb4'AR',_utf8mb4'CA',_utf8mb4'CO',_utf8mb4'CT',_utf8mb4'DE',_utf8mb4'DC',_utf8mb4'FL',_utf8mb4'GA',_utf8mb4'GU',_utf8mb4'HI',_utf8mb4'ID',_utf8mb4'IL',_utf8mb4'IN',_utf8mb4'IA',_utf8mb4'KS',_utf8mb4'KY',_utf8mb4'LA',_utf8mb4'ME',_utf8mb4'MD',_utf8mb4'MA',_utf8mb4'MI',_utf8mb4'MN',_utf8mb4'MS',_utf8mb4'MO',_utf8mb4'MT',_utf8mb4'NE',_utf8mb4'NV',_utf8mb4'NH',_utf8mb4'NJ',_utf8mb4'NM',_utf8mb4'NY',_utf8mb4'NC',_utf8mb4'ND',_utf8mb4'MP',_utf8mb4'OH',_utf8mb4'OK',_utf8mb4'OR',_utf8mb4'PA',_utf8mb4'PR',_utf8mb4'RI',_utf8mb4'SC',_utf8mb4'SD',_utf8mb4'TN',_utf8mb4'TX',_utf8mb4'UT',_utf8mb4'VT',_utf8mb4'VA',_utf8mb4'VI',_utf8mb4'WA',_utf8mb4'WV',_utf8mb4'WI',_utf8mb4'WY')))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Attendee_family`
+-- Dumping data for table `attendee_family`
 --
 
-LOCK TABLES `Attendee_family` WRITE;
-/*!40000 ALTER TABLE `Attendee_family` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Attendee_family` ENABLE KEYS */;
+LOCK TABLES `attendee_family` WRITE;
+/*!40000 ALTER TABLE `attendee_family` DISABLE KEYS */;
+/*!40000 ALTER TABLE `attendee_family` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -128,30 +128,32 @@ DROP TABLE IF EXISTS `check_in_out`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `check_in_out` (
-  `Person_ID` int NOT NULL,
-  `Hotel_name` varchar(50) DEFAULT NULL,
-  `Check_in_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `Expected_check_out_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `Actual_check_out_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `Room_number` varchar(50) DEFAULT NULL,
-  `Room_type` varchar(50) DEFAULT NULL,
-  `Room_leader` tinyint(1) DEFAULT NULL,
-  `Table_number` varchar(50) DEFAULT NULL,
-  `Day1dinner` tinyint(1) DEFAULT NULL,
-  `Day2breakfast` tinyint(1) DEFAULT NULL,
-  `Day2lunch` tinyint(1) DEFAULT NULL,
-  `Day2dinner` tinyint(1) DEFAULT NULL,
-  `Day3breakfast` tinyint(1) DEFAULT NULL,
-  `Day3lunch` tinyint(1) DEFAULT NULL,
-  `Day3dinner` tinyint(1) DEFAULT NULL,
-  `Day4breakfast` tinyint(1) DEFAULT NULL,
-  `Day4lunch` tinyint(1) DEFAULT NULL,
-  `Day4dinner` tinyint(1) DEFAULT NULL,
-  `Day5breakfast` tinyint(1) DEFAULT NULL,
-  `Day5lunch` tinyint(1) DEFAULT NULL,
-  `Special_request` text,
-  `Lodging` tinyint(1) DEFAULT NULL,
-  `Table_leader` tinyint(1) DEFAULT NULL
+  `person_id` int NOT NULL,
+  `hotel_name` varchar(50) DEFAULT NULL,
+  `check_in_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `expected_check_out_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `actual_check_out_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `room_number` varchar(50) DEFAULT NULL,
+  `room_type` varchar(50) DEFAULT NULL,
+  `room_leader` tinyint(1) DEFAULT NULL,
+  `table_number` varchar(50) DEFAULT NULL,
+  `day1dinner` tinyint(1) DEFAULT NULL,
+  `day2breakfast` tinyint(1) DEFAULT NULL,
+  `day2lunch` tinyint(1) DEFAULT NULL,
+  `day2dinner` tinyint(1) DEFAULT NULL,
+  `day3breakfast` tinyint(1) DEFAULT NULL,
+  `day3lunch` tinyint(1) DEFAULT NULL,
+  `day3dinner` tinyint(1) DEFAULT NULL,
+  `day4breakfast` tinyint(1) DEFAULT NULL,
+  `day4lunch` tinyint(1) DEFAULT NULL,
+  `day4dinner` tinyint(1) DEFAULT NULL,
+  `day5breakfast` tinyint(1) DEFAULT NULL,
+  `day5lunch` tinyint(1) DEFAULT NULL,
+  `special_request` text,
+  `lodging` tinyint(1) DEFAULT NULL,
+  `table_leader` tinyint(1) DEFAULT NULL,
+  KEY `person_id_fk` (`person_id`),
+  CONSTRAINT `person_id_fk` FOREIGN KEY (`person_id`) REFERENCES `attendee` (`person_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -178,8 +180,8 @@ CREATE TABLE `cwcid_archive` (
   `phone` varchar(50) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
-  KEY `cwc_id_FK2` (`cwc_id`),
-  CONSTRAINT `cwc_id_FK2` FOREIGN KEY (`cwc_id`) REFERENCES `Attendee_family` (`cwc_id`)
+  KEY `cwc_id_fk2` (`cwc_id`),
+  CONSTRAINT `cwc_id_fk2` FOREIGN KEY (`cwc_id`) REFERENCES `attendee_family` (`cwc_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -193,36 +195,35 @@ LOCK TABLES `cwcid_archive` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Hotel`
+-- Table structure for table `hotel`
 --
 
-DROP TABLE IF EXISTS `Hotel`;
+DROP TABLE IF EXISTS `hotel`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Hotel` (
-  `Hotel_name` varchar(50) DEFAULT NULL,
-  `Street_name` varchar(50) DEFAULT NULL,
-  `City` varchar(50) DEFAULT NULL,
-  `State` varchar(50) DEFAULT NULL,
-  `Telephone` varchar(50) DEFAULT NULL,
-  `Fax` varchar(50) DEFAULT NULL,
-  `Contact` varchar(50) DEFAULT NULL,
-  `RmType1` varchar(50) DEFAULT NULL,
-  `RmType2` varchar(50) DEFAULT NULL,
-  `RmType3` varchar(50) DEFAULT NULL,
-  `RmType4` varchar(50) DEFAULT NULL,
-  `Rooms` varchar(50) DEFAULT NULL,
-  CONSTRAINT `CHK_Hotel` CHECK ((`State` in (_utf8mb4'AL',_utf8mb4'AK',_utf8mb4'AS',_utf8mb4'AZ',_utf8mb4'AR',_utf8mb4'CA',_utf8mb4'CO',_utf8mb4'CT',_utf8mb4'DE',_utf8mb4'DC',_utf8mb4'FL',_utf8mb4'GA',_utf8mb4'GU',_utf8mb4'HI',_utf8mb4'ID',_utf8mb4'IL',_utf8mb4'IN',_utf8mb4'IA',_utf8mb4'KS',_utf8mb4'KY',_utf8mb4'LA',_utf8mb4'ME',_utf8mb4'MD',_utf8mb4'MA',_utf8mb4'MI',_utf8mb4'MN',_utf8mb4'MS',_utf8mb4'MO',_utf8mb4'MT',_utf8mb4'NE',_utf8mb4'NV',_utf8mb4'NH',_utf8mb4'NJ',_utf8mb4'NM',_utf8mb4'NY',_utf8mb4'NC',_utf8mb4'ND',_utf8mb4'MP',_utf8mb4'OH',_utf8mb4'OK',_utf8mb4'OR',_utf8mb4'PA',_utf8mb4'PR',_utf8mb4'RI',_utf8mb4'SC',_utf8mb4'SD',_utf8mb4'TN',_utf8mb4'TX',_utf8mb4'UT',_utf8mb4'VT',_utf8mb4'VA',_utf8mb4'VI',_utf8mb4'WA',_utf8mb4'WV',_utf8mb4'WI',_utf8mb4'WY')))
+CREATE TABLE `hotel` (
+  `hotel_name` varchar(50) DEFAULT NULL,
+  `street_name` varchar(50) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `state` varchar(50) DEFAULT NULL,
+  `fax` varchar(50) DEFAULT NULL,
+  `contact` varchar(50) DEFAULT NULL,
+  `rmtype1` varchar(50) DEFAULT NULL,
+  `rmtype2` varchar(50) DEFAULT NULL,
+  `rmtype3` varchar(50) DEFAULT NULL,
+  `rmtype4` varchar(50) DEFAULT NULL,
+  `rooms` varchar(50) DEFAULT NULL,
+  CONSTRAINT `chk_hotel` CHECK ((`state` in (_utf8mb4'AL',_utf8mb4'AK',_utf8mb4'AS',_utf8mb4'AZ',_utf8mb4'AR',_utf8mb4'CA',_utf8mb4'CO',_utf8mb4'CT',_utf8mb4'DE',_utf8mb4'DC',_utf8mb4'FL',_utf8mb4'GA',_utf8mb4'GU',_utf8mb4'HI',_utf8mb4'ID',_utf8mb4'IL',_utf8mb4'IN',_utf8mb4'IA',_utf8mb4'KS',_utf8mb4'KY',_utf8mb4'LA',_utf8mb4'ME',_utf8mb4'MD',_utf8mb4'MA',_utf8mb4'MI',_utf8mb4'MN',_utf8mb4'MS',_utf8mb4'MO',_utf8mb4'MT',_utf8mb4'NE',_utf8mb4'NV',_utf8mb4'NH',_utf8mb4'NJ',_utf8mb4'NM',_utf8mb4'NY',_utf8mb4'NC',_utf8mb4'ND',_utf8mb4'MP',_utf8mb4'OH',_utf8mb4'OK',_utf8mb4'OR',_utf8mb4'PA',_utf8mb4'PR',_utf8mb4'RI',_utf8mb4'SC',_utf8mb4'SD',_utf8mb4'TN',_utf8mb4'TX',_utf8mb4'UT',_utf8mb4'VT',_utf8mb4'VA',_utf8mb4'VI',_utf8mb4'WA',_utf8mb4'WV',_utf8mb4'WI',_utf8mb4'WY')))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Hotel`
+-- Dumping data for table `hotel`
 --
 
-LOCK TABLES `Hotel` WRITE;
-/*!40000 ALTER TABLE `Hotel` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Hotel` ENABLE KEYS */;
+LOCK TABLES `hotel` WRITE;
+/*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
+/*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -233,7 +234,7 @@ DROP TABLE IF EXISTS `meeting`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `meeting` (
-  `Workshop` varchar(50) DEFAULT NULL,
+  `workshop` varchar(50) DEFAULT NULL,
   `title` varchar(50) DEFAULT NULL,
   `description` text,
   `speaker` varchar(50) DEFAULT NULL,
@@ -259,42 +260,42 @@ DROP TABLE IF EXISTS `nametag`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `nametag` (
-  `Person_ID` int DEFAULT NULL,
-  `Family_ID` varchar(50) NOT NULL,
-  `Last_Name` varchar(50) DEFAULT NULL,
-  `First_Name` varchar(50) DEFAULT NULL,
-  `Chinese_Name` varchar(50) DEFAULT NULL,
-  `Title` varchar(50) DEFAULT NULL,
-  `Age` int DEFAULT NULL,
-  `Gender` varchar(50) DEFAULT NULL,
-  `Christian_Flag` tinyint(1) DEFAULT '0',
-  `City` varchar(50) DEFAULT NULL,
-  `State` varchar(50) DEFAULT NULL,
-  `General_Affair` tinyint(1) DEFAULT NULL,
-  `Book_Room` tinyint(1) DEFAULT NULL,
-  `Dining_Room` tinyint(1) DEFAULT NULL,
-  `Tape_Recording` tinyint(1) DEFAULT NULL,
-  `English_Translation` tinyint(1) DEFAULT NULL,
-  `Cantonese_Translation` tinyint(1) DEFAULT NULL,
-  `Nursery` tinyint(1) DEFAULT NULL,
-  `Time_Keeper` tinyint(1) DEFAULT NULL,
-  `Registration` tinyint(1) DEFAULT NULL,
-  `Counselor` tinyint(1) DEFAULT NULL,
-  `Speaker` tinyint(1) DEFAULT NULL,
-  `CWC_Worker` tinyint(1) DEFAULT NULL,
-  `Mission_Member` tinyint(1) DEFAULT NULL,
-  `Child_Coworker` tinyint(1) DEFAULT NULL,
-  `Winter_Coworker` tinyint(1) DEFAULT NULL,
-  `Confirmation_ID` bigint DEFAULT NULL,
-  `Church_Name` varchar(50) DEFAULT NULL,
-  `Table_Number` varchar(50) DEFAULT NULL,
-  `Room_Number` varchar(50) DEFAULT NULL,
-  `Workshop_Day` varchar(50) DEFAULT NULL,
-  `Workshop_Morning` varchar(50) DEFAULT NULL,
-  `Workshop_Afternoon` varchar(50) DEFAULT NULL,
-  KEY `Person_ID_FK3` (`Person_ID`),
-  CONSTRAINT `Person_ID_FK3` FOREIGN KEY (`Person_ID`) REFERENCES `attendee` (`Person_ID`),
-  CONSTRAINT `CHK_nametag` CHECK ((`Gender` in (_utf8mb4'Male',_utf8mb4'Female',_utf8mb4'F',_utf8mb4'M')))
+  `person_id` int DEFAULT NULL,
+  `family_id` varchar(50) NOT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `chinese_name` varchar(50) DEFAULT NULL,
+  `title` varchar(50) DEFAULT NULL,
+  `age` int DEFAULT NULL,
+  `gender` varchar(50) DEFAULT NULL,
+  `christian_flag` tinyint(1) DEFAULT '0',
+  `city` varchar(50) DEFAULT NULL,
+  `state` varchar(50) DEFAULT NULL,
+  `general_affair` tinyint(1) DEFAULT NULL,
+  `book_room` tinyint(1) DEFAULT NULL,
+  `dining_room` tinyint(1) DEFAULT NULL,
+  `tape_recording` tinyint(1) DEFAULT NULL,
+  `english_translation` tinyint(1) DEFAULT NULL,
+  `cantonese_translation` tinyint(1) DEFAULT NULL,
+  `nursery` tinyint(1) DEFAULT NULL,
+  `time_keeper` tinyint(1) DEFAULT NULL,
+  `registration` tinyint(1) DEFAULT NULL,
+  `counselor` tinyint(1) DEFAULT NULL,
+  `speaker` tinyint(1) DEFAULT NULL,
+  `cwc_worker` tinyint(1) DEFAULT NULL,
+  `mission_member` tinyint(1) DEFAULT NULL,
+  `child_coworker` tinyint(1) DEFAULT NULL,
+  `winter_coworker` tinyint(1) DEFAULT NULL,
+  `confirmation_id` bigint DEFAULT NULL,
+  `church_name` varchar(50) DEFAULT NULL,
+  `table_number` varchar(50) DEFAULT NULL,
+  `room_number` varchar(50) DEFAULT NULL,
+  `workshop_day` varchar(50) DEFAULT NULL,
+  `workshop_morning` varchar(50) DEFAULT NULL,
+  `workshop_afternoon` varchar(50) DEFAULT NULL,
+  KEY `person_id_fk3` (`person_id`),
+  CONSTRAINT `person_id_fk3` FOREIGN KEY (`person_id`) REFERENCES `attendee` (`person_id`),
+  CONSTRAINT `chk_nametag` CHECK ((`gender` in (_utf8mb4'Male',_utf8mb4'Female',_utf8mb4'F',_utf8mb4'M',_utf8mb4'f',_utf8mb4'm',_utf8mb4'male',_utf8mb4'female')))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -308,34 +309,34 @@ LOCK TABLES `nametag` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `Room`
+-- Table structure for table `room`
 --
 
-DROP TABLE IF EXISTS `Room`;
+DROP TABLE IF EXISTS `room`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Room` (
-  `Hotel_name` varchar(50) DEFAULT NULL,
-  `Room_number` varchar(50) DEFAULT NULL,
-  `Room_type` char(5) DEFAULT NULL,
-  `If_assigned` tinyint(1) DEFAULT NULL,
+CREATE TABLE `room` (
+  `hotel_name` varchar(50) DEFAULT NULL,
+  `room_number` varchar(50) DEFAULT NULL,
+  `room_type` char(5) DEFAULT NULL,
+  `if_assigned` tinyint(1) DEFAULT NULL,
   `room_occu` varchar(50) DEFAULT NULL,
-  `Gender` varchar(50) DEFAULT NULL,
-  `Age` int DEFAULT NULL,
-  `Check_in_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  CONSTRAINT `CHK_ROOM_gender` CHECK ((`Gender` in (_utf8mb4'Male',_utf8mb4'Female',_utf8mb4'F',_utf8mb4'M'))),
-  CONSTRAINT `CHK_ROOM_occu` CHECK ((`room_occu` in (_utf8mb4'Self-pay',_utf8mb4'Family',_utf8mb4'Single'))),
-  CONSTRAINT `CHK_ROOM_type` CHECK ((`Room_type` in (_utf8mb4'King',_utf8mb4'Queen',_utf8mb4'Suite')))
+  `gender` varchar(50) DEFAULT NULL,
+  `age` int DEFAULT NULL,
+  `check_in_datetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  CONSTRAINT `chk_room_gender` CHECK ((`gender` in (_utf8mb4'Male',_utf8mb4'Female',_utf8mb4'F',_utf8mb4'M',_utf8mb4'f',_utf8mb4'm',_utf8mb4'male',_utf8mb4'female'))),
+  CONSTRAINT `chk_room_occu` CHECK ((`room_occu` in (_utf8mb4'Self-pay',_utf8mb4'Family',_utf8mb4'Single'))),
+  CONSTRAINT `chk_room_type` CHECK ((`room_type` in (_utf8mb4'King',_utf8mb4'Queen',_utf8mb4'Suite')))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Room`
+-- Dumping data for table `room`
 --
 
-LOCK TABLES `Room` WRITE;
-/*!40000 ALTER TABLE `Room` DISABLE KEYS */;
-/*!40000 ALTER TABLE `Room` ENABLE KEYS */;
+LOCK TABLES `room` WRITE;
+/*!40000 ALTER TABLE `room` DISABLE KEYS */;
+/*!40000 ALTER TABLE `room` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -351,4 +352,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-16  9:42:10
+-- Dump completed on 2024-04-16 12:25:27
