@@ -33,7 +33,6 @@ public class UserService {
         return token;
     }
 
-
     public UserInfo getUserInfo(String username) {
         UserInfo userinfo = userMapper.findUserInfoByUsername(username);
         return userinfo;
@@ -43,5 +42,4 @@ public class UserService {
         List<User> users = userMapper.getAllUsers();
         return users;
     }
-
 }
