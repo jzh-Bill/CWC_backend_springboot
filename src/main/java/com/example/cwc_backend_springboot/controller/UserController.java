@@ -4,6 +4,7 @@ import com.example.cwc_backend_springboot.common.Result;
 import com.example.cwc_backend_springboot.entity.Account;
 import com.example.cwc_backend_springboot.entity.Token;
 import com.example.cwc_backend_springboot.entity.User;
+import com.example.cwc_backend_springboot.entity.UserInfo;
 import com.example.cwc_backend_springboot.mapper.UserMapper;
 import com.example.cwc_backend_springboot.service.UserService;
 import jakarta.annotation.Resource;
@@ -26,7 +27,6 @@ public class UserController {
         if (userService.login(account) == true) {
             // When user is found, we return a token which servers as an indicator to show the password is matched.
             Token token = userService.getToken(account.getUsername());
-
             // We set the result(or response) status to be 0 to make frontend aware that user is found.
             result.setStatus(0);
             result.setMsg("Success logged in");
@@ -38,5 +38,16 @@ public class UserController {
         }
         return result;
     }
+
+    @PostMapping(value = "userInfo", produces = "application/json")
+    public Result userInfo(@RequestBody User user) {
+        return Result.success(userService.getUserInfo(user.getUsername()));
+    }
+
+    @GetMapping(value = "user/list", produces = "application/json")
+    public Result userList() {
+        return Result.success(userService.getUsers());
+    }
+
 }
 
