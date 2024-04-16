@@ -27,6 +27,9 @@ public interface UserMapper {
     @Select("select username, id from users where username = #{username}")
     Token findTokenByUsername(String username);
 
+    @Select("select * from users limit 3")
+    List<User> getUsers();
+
     @Select("select id, username, role, name, description, token from users where username = #{username}")
     UserInfo findUserInfoByUsername(String username);
 
