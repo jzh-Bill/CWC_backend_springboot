@@ -18,6 +18,22 @@
 --
 -- Table structure for table `attendee`
 --
+CREATE DATABASE IF NOT EXISTS cwc_backend_db;
+USE cwc_backend_db;
+
+-- table for testing
+CREATE TABLE users (
+                       id INT AUTO_INCREMENT PRIMARY KEY,
+                       username VARCHAR(50) NOT NULL,
+                       password VARCHAR(100) NOT NULL,
+                       role VARCHAR(50),
+                       name VARCHAR(100),
+                       description TEXT,
+                       token VARCHAR(100)
+);
+
+INSERT INTO users (username, password, role, name, description, token)
+VALUES ('john_doe', 'password123', 'user', 'John Doe', 'Regular user', 'abc123xyz456');
 
 DROP TABLE IF EXISTS `attendee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -89,7 +105,6 @@ LOCK TABLES `attendee` WRITE;
 /*!40000 ALTER TABLE `attendee` DISABLE KEYS */;
 /*!40000 ALTER TABLE `attendee` ENABLE KEYS */;
 UNLOCK TABLES;
-
 --
 -- Table structure for table `attendee_family`
 --
