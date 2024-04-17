@@ -42,4 +42,8 @@ public class UserService {
         List<User> users = userMapper.getAllUsers();
         return users;
     }
+
+    public void deleteUserByID(int targetUserID) {
+        userMapper.deleteUserByID(targetUserID);
+    }
 }
