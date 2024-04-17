@@ -3,10 +3,7 @@ package com.example.cwc_backend_springboot.mapper;
 import com.example.cwc_backend_springboot.entity.Token;
 import com.example.cwc_backend_springboot.entity.User;
 import com.example.cwc_backend_springboot.entity.UserInfo;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 @Mapper
@@ -35,4 +32,7 @@ public interface UserMapper {
 
     @Select("select id, name, role, description from users where role != 'admin'")
     List<User> getAllUsers();
+
+    @Delete("delete from users where id = #{targetUserID};")
+    void deleteUserByID(int targetUserID);
 }

@@ -11,6 +11,8 @@ import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 //@RequestMapping("/user") //This is the prefix of URL when client trying to get
 
 @RequestMapping("/") //This is the prefix of URL when client trying to get
@@ -49,5 +51,12 @@ public class UserController {
         return Result.success(userService.getUsers());
     }
 
+    // In this function, the request body does not have entity object to receive due to a few number of time of use.
+    // Thus, we use Map<String, Object> to receive the request body, then map the keywords to variables
+    @PostMapping(value = "user/delete", produces = "application/json")
+    public void userInfo(@RequestBody Map<String, Object> requestData) {
+        Integer targetUserID = (Integer)requestData.get("id");
+        userService.deleteUserByID(targetUserID);
+    }
 }
 
