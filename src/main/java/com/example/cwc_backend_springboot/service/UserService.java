@@ -7,6 +7,7 @@ import com.example.cwc_backend_springboot.entity.UserInfo;
 import com.example.cwc_backend_springboot.exception.CustomException;
 import jakarta.annotation.Resource;
 import com.example.cwc_backend_springboot.mapper.UserMapper;
+import org.apache.ibatis.jdbc.Null;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -45,5 +46,16 @@ public class UserService {
 
     public void deleteUserByID(int targetUserID) {
         userMapper.deleteUserByID(targetUserID);
+    }
+
+    public void editUserByID(UserInfo userInfo){
+        int userID = userInfo.getId();
+        String newDescription = userInfo.getDescription();
+        String newname = userInfo.getName();
+        String newUserRole = userInfo.getRole();
+
+        if (newDescription != null) { userMapper.updateUserDescriptionByID(userID, newDescription); };
+        if (newname != null) { userMapper.updateRealNameByID(userID, newname); };
+        if (newUserRole != null) { userMapper.updateUserRoleByID(userID, newUserRole); };
     }
 }

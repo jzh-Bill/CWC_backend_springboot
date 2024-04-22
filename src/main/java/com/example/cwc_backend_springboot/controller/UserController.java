@@ -58,5 +58,11 @@ public class UserController {
         Integer targetUserID = (Integer)requestData.get("id");
         userService.deleteUserByID(targetUserID);
     }
+
+    @PostMapping(value = "user/edit", produces = "application/json")
+    public Result userInfo(@RequestBody UserInfo userinfo) {
+        userService.editUserByID(userinfo);
+        return Result.success();
+    }
 }
 

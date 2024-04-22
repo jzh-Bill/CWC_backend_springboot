@@ -35,4 +35,13 @@ public interface UserMapper {
 
     @Delete("delete from users where id = #{targetUserID};")
     void deleteUserByID(int targetUserID);
+
+    @Update("UPDATE users SET description = #{newDescription} WHERE id = #{userID}")
+    void updateUserDescriptionByID(int userID, String newDescription);
+
+    @Update("UPDATE users SET name = #{newUsername} WHERE id = #{userID}")
+    void updateRealNameByID(int userID, String newUsername);
+
+    @Update("UPDATE users SET role = #{newRole} WHERE id = #{userID}")
+    void updateUserRoleByID(int userID, String newRole);
 }
