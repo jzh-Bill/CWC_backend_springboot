@@ -2,7 +2,7 @@
 
 ### Teck stack: 
 - DB: Mysql 
-- Rest Service: Sprint Boot
+- Rest Service: Spring Boot
 
 ## Run SprintBoot App
 1. install maven

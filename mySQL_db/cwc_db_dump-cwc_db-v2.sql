@@ -91,8 +91,8 @@ CREATE TABLE `attendee` (
   `att_lc_pt` tinyint(1) DEFAULT NULL,
   `active` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`person_id`),
-  KEY `cwc_id_fk` (`cwc_id`),
-  CONSTRAINT `cwc_id_fk` FOREIGN KEY (`cwc_id`) REFERENCES `attendee_family` (`cwc_id`),
+--   KEY `cwc_id_fk` (`cwc_id`),
+--   CONSTRAINT `cwc_id_fk` FOREIGN KEY (`cwc_id`) REFERENCES `attendee_family` (`cwc_id`),
   CONSTRAINT `chk_attendee` CHECK ((`gender` in (_utf8mb4'Male',_utf8mb4'Female',_utf8mb4'F',_utf8mb4'M',_utf8mb4'f',_utf8mb4'm',_utf8mb4'male',_utf8mb4'female')))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -100,6 +100,8 @@ CREATE TABLE `attendee` (
 --
 -- Dumping data for table `attendee`
 --
+INSERT INTO attendee (cwc_id, first_name, last_name, family_id, middle_name, chinese_name, christian_flag, single, gender, age, phone, email, fax, language_preference)
+VALUES ('CWC001', 'John', 'Doe', 'FAM001', NULL, NULL, 1, 1, 'Male', 30, '1234567890', 'john@example.com', NULL, 'English');
 
 LOCK TABLES `attendee` WRITE;
 /*!40000 ALTER TABLE `attendee` DISABLE KEYS */;
