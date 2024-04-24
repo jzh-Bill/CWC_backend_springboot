@@ -2,7 +2,7 @@
 
 ### Teck stack: 
 - DB: Mysql 
-- Rest Service: Sprint Boot
+- Rest Service: Spring Boot
 
 ## Run SprintBoot App
 1. install maven
@@ -31,8 +31,8 @@ mvn clean package
 2024-04-16T12:33:21.711-07:00  INFO 82708 --- [CWC_backend_springboot] [           main] c.e.c.CwcBackendSpringbootApplication    : Started CwcBackendSpringbootApplication in 1.744 seconds (process running for 2.298)
 ```
 6. Open http://localhost:9090/, if you can see as below, your app is up running now!
-
 ![img.png](img.png)
+7. [For developer] check all REST endpoints at http://localhost:9090/swagger-ui/index.html;
 
 ## Set up Mysql
 1. install mysql
@@ -54,3 +54,4 @@ exit;
 3. Run Sprint Boot App and open http://localhost:9090/testdb, mysql is connected if you can see message below.
 ![img_1.png](img_1.png)
 4. **[optional]** Mysql GUI: mysql workbench [download link](https://dev.mysql.com/doc/workbench/en/wb-installing.html).
+
