@@ -30,7 +30,7 @@ public interface UserMapper {
     @Select("select id, username, role, name, description, token from users where username = #{username}")
     UserInfo findUserInfoByUsername(String username);
 
-    @Select("select id, name, role, description from users where role != 'admin'")
+    @Select("select id, username, name, role, description from users where role != 'admin'")
     List<User> getAllUsers();
 
     @Delete("delete from users where id = #{targetUserID};")
@@ -44,4 +44,7 @@ public interface UserMapper {
 
     @Update("UPDATE users SET role = #{newRole} WHERE id = #{userID}")
     void updateUserRoleByID(int userID, String newRole);
+
+    @Insert("INSERT INTO users (username, password, role, name, description, token) VALUES (#{username},#{password},#{role},#{name},#{description},#{token});")
+    void insertUser(String username, String password, String role, String name, String description, String token);
 }

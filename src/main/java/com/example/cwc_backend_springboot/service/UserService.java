@@ -58,4 +58,21 @@ public class UserService {
         if (newname != null) { userMapper.updateRealNameByID(userID, newname); };
         if (newUserRole != null) { userMapper.updateUserRoleByID(userID, newUserRole); };
     }
+
+    public boolean addUser(User user) {
+        User existedUser = userMapper.selectByUsername(user.getUsername());
+        if (existedUser != null) {
+            return false;
+        } else {
+            if (user.getRole().equals("editor")) {user.setToken("editor");}
+            userMapper.insertUser(user.getUsername(),
+                                    user.getPassword(),
+                                    user.getRole(),
+                                    user.getName(),
+                                    user.getDescription(),
+                                    user.getToken()
+                                  );
+            return true;
+        }
+    }
 }

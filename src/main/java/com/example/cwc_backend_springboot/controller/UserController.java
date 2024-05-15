@@ -64,5 +64,15 @@ public class UserController {
         userService.editUserByID(userinfo);
         return Result.success();
     }
+
+    @PostMapping(value = "user/add", produces = "application/json")
+    public Result addUser(@RequestBody User user) {
+        System.out.println(user);
+        if (userService.addUser(user)) {
+            return Result.success();
+        } else {
+            return Result.error("The username already existed");
+        }
+    }
 }
 
