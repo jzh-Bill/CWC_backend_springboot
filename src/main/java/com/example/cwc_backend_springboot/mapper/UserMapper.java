@@ -8,15 +8,6 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 @Mapper
 public interface UserMapper {
-    //    @Select("select * from sys_users")
-//    List<User> findAll();
-//
-//    @Insert("INSERT into sys_users(username, password, nickname, email, address) VALUE (#{username}, #{password} , #{nickname}, #{email}, #{address})")
-//    int insert(User user);
-//
-//    @Update("UPDATE sys_users set username = #{username}, password = #{password}, nickname = #{nickname}, email = #{email}, address = #{address}" +
-//            " where id = #{id}") // You may create a bug if you have no space between keyword "where" and #{address}
-//    int update(User user);
 
     @Select("select * from users where username = #{username}")
     User selectByUsername(String username);
@@ -30,7 +21,7 @@ public interface UserMapper {
     @Select("select id, username, role, name, description, token from users where username = #{username}")
     UserInfo findUserInfoByUsername(String username);
 
-    @Select("select id, name, role, description from users where role != 'admin'")
+    @Select("select id, username, name, role, description from users where role != 'admin'")
     List<User> getAllUsers();
 
     @Delete("delete from users where id = #{targetUserID};")
@@ -44,4 +35,7 @@ public interface UserMapper {
 
     @Update("UPDATE users SET role = #{newRole} WHERE id = #{userID}")
     void updateUserRoleByID(int userID, String newRole);
+
+    @Insert("INSERT INTO users (username, password, role, name, description, token) VALUES (#{username},#{password},#{role},#{name},#{description},#{token});")
+    void insertUser(String username, String password, String role, String name, String description, String token);
 }
