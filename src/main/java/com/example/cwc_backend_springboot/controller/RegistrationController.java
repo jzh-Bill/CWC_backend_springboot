@@ -83,14 +83,19 @@ public class RegistrationController {
 
     @PostMapping (value = "registration/confirmChildren", produces = "application/json")
     public Result confirmChildren(@RequestBody List<ChildAttendee> childAttendeeList) {
-        for (ChildAttendee childAttendee : childAttendeeList) {
-            int familyID = registrationService.getFamilyId(childAttendee.getCwc_id());
-            childAttendee.setFamily_id(familyID);
-            registrationService.saveChildrenAttendee(childAttendee);
-            System.out.println("The current adult attendee is"+childAttendee);
+        try {
+            for (ChildAttendee childAttendee : childAttendeeList) {
+                int familyID = registrationService.getFamilyId(childAttendee.getCwc_id());
+                childAttendee.setFamily_id(familyID);
+                registrationService.saveChildrenAttendee(childAttendee);
+                System.out.println("The current adult attendee is"+childAttendee);
+            }
+            return new Result().success("The children list attendee save successes");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new Result().error("The children list attendee save failed");
         }
-        System.out.println("The adult attendee list is " + childAttendeeList.get(0).toString());
-        return new Result().success(childAttendeeList.get(0));
+
     }
 
 }
